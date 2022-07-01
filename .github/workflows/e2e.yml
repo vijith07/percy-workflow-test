@@ -1,0 +1,26 @@
+# .github/workflows/e2e-tests.yml
+# test the deployment
+name: e2e
+on:
+  repository_dispatch:
+    types: [successful-deploy]
+
+jobs:
+  # example job showing the request information
+  show-event:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Testing url ${{ github.event.client_payload.deployment_url }}"
+      - run: echo "Testing ref ${{ github.event.client_payload.ref }}"
+
+  test-e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install
+        run: npm install
+      - name: Percy Test
+        run: npx percy exec -- cypress run --config baseUrl=${{ github.event.client_payload.deployment_url }}
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}

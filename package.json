@@ -1,0 +1,33 @@
+{
+  "name": "percy-workflow-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "percy": "percy exec -- cypress-tags run",
+    "cypress:percy": "percy exec -- cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vijith07/percy-workflow-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@applitools/eyes-cypress": "^3.26.3",
+    "cypress": "^9.7.0"
+  },
+  "bugs": {
+    "url": "https://github.com/vijith07/percy-workflow-test/issues"
+  },
+  "homepage": "https://github.com/vijith07/percy-workflow-test#readme",
+  "devDependencies": {
+    "@percy/cli": "~1.3.1",
+    "@percy/cypress": "^3.1.2",
+    "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  }
+}
