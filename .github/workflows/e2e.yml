@@ -11,10 +11,7 @@ jobs:
   show-event:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Testing url ${{ github.event.client_payload.deployment_url }}"
-      - run: echo "Testing ref ${{ github.event.client_payload.ref }}"
-      - run: echo "Testing sha ${{ github.event.types }}"
-      - run: echo "Testing sha ${{ github.event.types[0] }}"
+      - run: echo "action type ${{ github.event.action }}"
 
   test-e2e:
     runs-on: ubuntu-latest
