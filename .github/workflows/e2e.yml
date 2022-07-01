@@ -3,7 +3,8 @@
 name: e2e
 on:
   repository_dispatch:
-    types: [successful-deploy]
+    branches:
+      - main
 
 jobs:
   # example job showing the request information
@@ -12,6 +13,8 @@ jobs:
     steps:
       - run: echo "Testing url ${{ github.event.client_payload.deployment_url }}"
       - run: echo "Testing ref ${{ github.event.client_payload.ref }}"
+      - run: echo "Testing sha ${{ github.event.types }}"
+      - run: echo "Testing sha ${{ github.event.types[0] }}"
 
   test-e2e:
     runs-on: ubuntu-latest
